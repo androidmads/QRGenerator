@@ -42,6 +42,7 @@ QRGSaver.save(savePath, edtValue.getText().toString().trim(), bitmap, QRGContent
 For more Details <a href="https://github.com/androidmads/QRGenerator/blob/master/app/src/main/java/androidmads/example/MainActivity.java">Visit Here</a>
 
 # License:
+```
 The MIT License (MIT)
 
 Copyright (c) 2016 AndroidMad / Mushtaq M A
@@ -63,3 +64,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
