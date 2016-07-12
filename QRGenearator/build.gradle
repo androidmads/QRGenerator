@@ -30,3 +30,44 @@ dependencies {
     compile files('libs/qrg_lib.jar')
 }
 
+
+bintray {
+    user = 'androidmads'
+    key = '34a623d0f82abd830cbffc426618b3ba64606d97'
+    pkg {
+        repo = 'maven'
+        name = 'androidmads.library.qrgenearator'
+
+        version {
+            name = '1.0.0'
+            desc = 'QR Generator Library'
+            released = new Date()
+            vcsTag = '1.0.0'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/androidmads/QRGenerator.git'
+        websiteUrl = 'https://androidmads.blogspot.com'
+    }
+    configurations = ['archives']
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task generateJavadocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+artifacts {
+    archives generateSourcesJar
+    archives generateJavadocsJar
+}
