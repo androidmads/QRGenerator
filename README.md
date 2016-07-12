@@ -1,5 +1,8 @@
 # QRGenerator
 QR Generator Library and Saves the QR Code as Image
+
+### Featured In:
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-QRGenerator-green.svg?style=true)](https://android-arsenal.com/details/1/3890)
 ### How to Import the Library:
 <b>Gradle:</b>
 ```
