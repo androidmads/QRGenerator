@@ -7,12 +7,6 @@ QR Generator Library and Saves the QR Code as Image
 <b>Gradle:</b>
 ```
 compile 'androidmads.library.qrgenearator:QRGenearator:1.0.0'
-	
-repositories{
-    maven{
-        url 'https://dl.bintray.com/androidmads/maven'
-    }
-}
 ```
 
 ### Permission:
