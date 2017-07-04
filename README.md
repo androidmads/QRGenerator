@@ -6,7 +6,7 @@ QR Generator Library and Saves the QR Code as Image
 ### How to Import the Library:
 <b>Gradle:</b>
 ```groovy
-compile 'androidmads.library.qrgenearator:QRGenearator:1.0.0'
+compile 'androidmads.library.qrgenearator:QRGenearator:1.0.1'
 ```
 
 ### Permission:
