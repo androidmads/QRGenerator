@@ -3,17 +3,15 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'androidmads.library.qrgenearator' // Change this to match your package name
-version = '1.0.0' // Change this to match your version number
+version = '1.0.1' // Change this to match your version number
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 26
     }
     buildTypes {
         release {
@@ -25,24 +23,23 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
     compile files('libs/qrg_lib.jar')
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
-    user = 'androidmads'
-    key = '34a623d0f82abd830cbffc426618b3ba64606d97'
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
     pkg {
         repo = 'maven'
         name = 'androidmads.library.qrgenearator'
-
         version {
-            name = '1.0.0'
+            name = '1.0.1'
             desc = 'QR Generator Library'
             released = new Date()
-            vcsTag = '1.0.0'
+            vcsTag = '1.0.1'
         }
 
         licenses = ['Apache-2.0']
