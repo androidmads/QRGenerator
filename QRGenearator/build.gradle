@@ -3,7 +3,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'androidmads.library.qrgenearator' // Change this to match your package name
-version = '1.0.1' // Change this to match your version number
+version = '1.0.2' // Change this to match your version number
 
 android {
     compileSdkVersion 26
@@ -36,10 +36,10 @@ bintray {
         repo = 'maven'
         name = 'androidmads.library.qrgenearator'
         version {
-            name = '1.0.1'
+            name = '1.0.2'
             desc = 'QR Generator Library'
             released = new Date()
-            vcsTag = '1.0.1'
+            vcsTag = '1.0.2'
         }
 
         licenses = ['Apache-2.0']
