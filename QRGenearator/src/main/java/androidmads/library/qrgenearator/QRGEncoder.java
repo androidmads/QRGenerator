@@ -19,8 +19,9 @@ import java.util.Map;
 @SuppressWarnings("ALL")
 public class QRGEncoder {
 
-    private static final int WHITE = 0xFFFFFFFF;
-    private static final int BLACK = 0xFF000000;
+    private int WHITE = 0xFFFFFFFF;
+    private int BLACK = 0xFF000000;
+    
 
     private int dimension = Integer.MIN_VALUE;
     private String contents = null;
@@ -29,6 +30,22 @@ public class QRGEncoder {
     private BarcodeFormat format = null;
     private boolean encoded = false;
 
+    public void setColorWhite(int color){
+        this.WHITE=color
+    }
+    
+    public void setColorBlack(int color){
+        this.BLACK=color
+    }
+    
+    public int getColorWhite(){
+        return this.WHITE;
+    }
+    
+    public int getColorBlack(){
+        return this.Black;
+    }
+    
     public QRGEncoder(String data, Bundle bundle, String type, int dimension) {
         this.dimension = dimension;
         encoded = encodeContents(data, bundle, type);
@@ -188,7 +205,7 @@ public class QRGEncoder {
         for (int y = 0; y < height; y++) {
             int offset = y * width;
             for (int x = 0; x < width; x++) {
-                pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
+                pixels[offset + x] = result.get(x, y) ? getColorBlack() : getColorWhite();
             }
         }
 
