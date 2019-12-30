@@ -6,8 +6,13 @@ QR Generator Library and Saves the QR Code as Image
 ### How to Import the Library:
 <b>Gradle:</b>
 ```groovy
-compile 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
 ```
+
+### Whats New in 1.0.4:
+1. QR code color can be changed dynamically
+2. Android X support is included
+3. Minimum support from version 14 is included
 
 ### Permission:
 Add This Permission for saving your generated code
@@ -20,9 +25,11 @@ The following lines are used to generated the QR Code
 ```java
 // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
 QRGEncoder qrgEncoder = new QRGEncoder(inputValue, null, QRGContents.Type.TEXT, smallerDimension);
+qrgEncoder.setColorBlack(Color.RED);
+qrgEncoder.setColorWhite(Color.BLUE);
 try {
   // Getting QR-Code as Bitmap
-  bitmap = qrgEncoder.encodeAsBitmap();
+  bitmap = qrgEncoder.getBitmap();
   // Setting Bitmap to ImageView
   qrImage.setImageBitmap(bitmap);
 } catch (WriterException e) {
@@ -33,7 +40,8 @@ try {
 Save QR Code as Image 
 ```java
 // Save with location, value, bitmap returned and type of Image(JPG/PNG).
-QRGSaver.save(savePath, edtValue.getText().toString().trim(), bitmap, QRGContents.ImageType.IMAGE_JPEG);
+QRGSaver qrgSaver = new QRGSaver();
+qrgSaver.save(savePath, edtValue.getText().toString().trim(), bitmap, QRGContents.ImageType.IMAGE_JPEG);
 ```
 
 For more Details [Click Here](https://github.com/androidmads/QRGenerator/blob/master/app/src/main/java/androidmads/example/MainActivity.java)
