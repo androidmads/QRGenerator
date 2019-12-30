@@ -12,7 +12,9 @@
         android:id="@+id/edt_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Text" />
+        android:hint="@string/enter_text"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,21 +24,21 @@
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/start"
+            android:id="@+id/generate_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Generate" />
+            android:text="@string/generate"/>
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/save"
+            android:id="@+id/save_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="@string/save"/>
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/QR_Image"
+        android:id="@+id/qr_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name" />

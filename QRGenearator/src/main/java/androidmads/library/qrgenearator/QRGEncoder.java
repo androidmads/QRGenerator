@@ -8,7 +8,6 @@ import android.telephony.PhoneNumberUtils;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import java.util.Collection;
@@ -21,8 +20,6 @@ public class QRGEncoder {
 
     private int WHITE = 0xFFFFFFFF;
     private int BLACK = 0xFF000000;
-    
-
     private int dimension = Integer.MIN_VALUE;
     private String contents = null;
     private String displayContents = null;
@@ -30,22 +27,31 @@ public class QRGEncoder {
     private BarcodeFormat format = null;
     private boolean encoded = false;
 
-    public void setColorWhite(int color){
-        this.WHITE=color
+    public void setColorWhite(int color) {
+        this.WHITE = color;
     }
-    
-    public void setColorBlack(int color){
-        this.BLACK=color
+
+    public void setColorBlack(int color) {
+        this.BLACK = color;
     }
-    
-    public int getColorWhite(){
+
+    public int getColorWhite() {
         return this.WHITE;
     }
-    
-    public int getColorBlack(){
-        return this.Black;
+
+    public int getColorBlack() {
+        return this.BLACK;
     }
-    
+
+    public QRGEncoder(String data, String type) {
+        encoded = encodeContents(data, null, QRGContents.Type.TEXT);
+    }
+
+    public QRGEncoder(String data, String type, int dimension) {
+        this.dimension = dimension;
+        encoded = encodeContents(data, null, QRGContents.Type.TEXT);
+    }
+
     public QRGEncoder(String data, Bundle bundle, String type, int dimension) {
         this.dimension = dimension;
         encoded = encodeContents(data, bundle, type);
@@ -107,17 +113,17 @@ public class QRGEncoder {
                     StringBuilder newContents = new StringBuilder(100);
                     StringBuilder newDisplayContents = new StringBuilder(100);
 
-                    newContents.append("MECARD:");
+                    newContents.append("VCARD:");
 
                     String name = trim(bundle.getString(ContactsContract.Intents.Insert.NAME));
                     if (name != null) {
-                        newContents.append("N:").append(escapeMECARD(name)).append(';');
+                        newContents.append("N:").append(escapeVCard(name)).append(';');
                         newDisplayContents.append(name);
                     }
 
                     String address = trim(bundle.getString(ContactsContract.Intents.Insert.POSTAL));
                     if (address != null) {
-                        newContents.append("ADR:").append(escapeMECARD(address)).append(';');
+                        newContents.append("ADR:").append(escapeVCard(address)).append(';');
                         newDisplayContents.append('\n').append(address);
                     }
 
@@ -129,7 +135,7 @@ public class QRGEncoder {
                         }
                     }
                     for (String phone : uniquePhones) {
-                        newContents.append("TEL:").append(escapeMECARD(phone)).append(';');
+                        newContents.append("TEL:").append(escapeVCard(phone)).append(';');
                         //noinspection deprecation
                         newDisplayContents.append('\n').append(PhoneNumberUtils.formatNumber(phone));
                     }
@@ -142,20 +148,20 @@ public class QRGEncoder {
                         }
                     }
                     for (String email : uniqueEmails) {
-                        newContents.append("EMAIL:").append(escapeMECARD(email)).append(';');
+                        newContents.append("EMAIL:").append(escapeVCard(email)).append(';');
                         newDisplayContents.append('\n').append(email);
                     }
 
                     String url = trim(bundle.getString(QRGContents.URL_KEY));
                     if (url != null) {
-                        // escapeMECARD(url) -> wrong escape e.g. http\://zxing.google.com
+                        // escapeVCard(url) -> wrong escape e.g. http\://zxing.google.com
                         newContents.append("URL:").append(url).append(';');
                         newDisplayContents.append('\n').append(url);
                     }
 
                     String note = trim(bundle.getString(QRGContents.NOTE_KEY));
                     if (note != null) {
-                        newContents.append("NOTE:").append(escapeMECARD(note)).append(';');
+                        newContents.append("NOTE:").append(escapeVCard(note)).append(';');
                         newDisplayContents.append('\n').append(note);
                     }
 
@@ -187,34 +193,37 @@ public class QRGEncoder {
         }
     }
 
-    public Bitmap encodeAsBitmap() throws WriterException {
+    public Bitmap getBitmap() {
         if (!encoded) return null;
-
-        Map<EncodeHintType, Object> hints = null;
-        String encoding = guessAppropriateEncoding(contents);
-        if (encoding != null) {
-            hints = new EnumMap<>(EncodeHintType.class);
-            hints.put(EncodeHintType.CHARACTER_SET, encoding);
-        }
-        MultiFormatWriter writer = new MultiFormatWriter();
-        BitMatrix result = writer.encode(contents, format, dimension, dimension, hints);
-        int width = result.getWidth();
-        int height = result.getHeight();
-        int[] pixels = new int[width * height];
-        // All are 0, or black, by default
-        for (int y = 0; y < height; y++) {
-            int offset = y * width;
-            for (int x = 0; x < width; x++) {
-                pixels[offset + x] = result.get(x, y) ? getColorBlack() : getColorWhite();
+        try {
+            Map<EncodeHintType, Object> hints = null;
+            String encoding = guessAppropriateEncoding(contents);
+            if (encoding != null) {
+                hints = new EnumMap<>(EncodeHintType.class);
+                hints.put(EncodeHintType.CHARACTER_SET, encoding);
             }
-        }
+            MultiFormatWriter writer = new MultiFormatWriter();
+            BitMatrix result = writer.encode(contents, format, dimension, dimension, hints);
+            int width = result.getWidth();
+            int height = result.getHeight();
+            int[] pixels = new int[width * height];
+            // All are 0, or black, by default
+            for (int y = 0; y < height; y++) {
+                int offset = y * width;
+                for (int x = 0; x < width; x++) {
+                    pixels[offset + x] = result.get(x, y) ? getColorBlack() : getColorWhite();
+                }
+            }
 
-        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
-        return bitmap;
+            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+            return bitmap;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
-    private static String guessAppropriateEncoding(CharSequence contents) {
+    private String guessAppropriateEncoding(CharSequence contents) {
         // Very crude at the moment
         for (int i = 0; i < contents.length(); i++) {
             if (contents.charAt(i) > 0xFF) {
@@ -224,7 +233,7 @@ public class QRGEncoder {
         return null;
     }
 
-    private static String trim(String s) {
+    private String trim(String s) {
         if (s == null) {
             return null;
         }
@@ -232,7 +241,7 @@ public class QRGEncoder {
         return result.length() == 0 ? null : result;
     }
 
-    private static String escapeMECARD(String input) {
+    private String escapeVCard(String input) {
         if (input == null || (input.indexOf(':') < 0 && input.indexOf(';') < 0)) {
             return input;
         }
