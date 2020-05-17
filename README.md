@@ -28,14 +28,11 @@ The following lines are used to generated the QR Code
 QRGEncoder qrgEncoder = new QRGEncoder(inputValue, null, QRGContents.Type.TEXT, smallerDimension);
 qrgEncoder.setColorBlack(Color.RED);
 qrgEncoder.setColorWhite(Color.BLUE);
-try {
-  // Getting QR-Code as Bitmap
-  bitmap = qrgEncoder.getBitmap();
-  // Setting Bitmap to ImageView
-  qrImage.setImageBitmap(bitmap);
-} catch (WriterException e) {
-  Log.v(TAG, e.toString());
-}
+
+// Getting QR-Code as Bitmap
+bitmap = qrgEncoder.getBitmap();
+// Setting Bitmap to ImageView
+qrImage.setImageBitmap(bitmap);
 ```
 
 Save QR Code as Image 
