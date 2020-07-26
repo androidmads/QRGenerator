@@ -7,6 +7,7 @@ QR Generator Library and Saves the QR Code as Image
 <b>Gradle:</b>
 ```groovy
 implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.4'
+implementation 'com.google.zxing:core:3.3.2'
 ```
 
 ### Whats New in 1.0.4:
