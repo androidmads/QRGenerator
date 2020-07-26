@@ -1,5 +1,5 @@
 # QRGenerator
-QR Generator Library and Saves the QR Code as Image
+Library to generate QR code and save it as bitmap
 
 ### Featured In:
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-QRGenerator-green.svg?style=true)](https://android-arsenal.com/details/1/3890)
