@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QRGenearator/QRGenearator.iml" filepath="$PROJECT_DIR$/QRGenearator/QRGenearator.iml" />
       <module fileurl="file://$PROJECT_DIR$/QRGenerator.iml" filepath="$PROJECT_DIR$/QRGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/QRGeneratorGIT_Fork_Vladimir.iml" filepath="$PROJECT_DIR$/.idea/modules/QRGeneratorGIT_Fork_Vladimir.iml" group="QRGeneratorGIT_Fork_Vladimir" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/QRGeneratorGIT_Fork_Vladimir-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/QRGeneratorGIT_Fork_Vladimir-app.iml" group="QRGeneratorGIT_Fork_Vladimir/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/QRGenearator/androidmads.library.qrgenearator-QRGenearator.iml" filepath="$PROJECT_DIR$/.idea/modules/QRGenearator/androidmads.library.qrgenearator-QRGenearator.iml" group="QRGeneratorGIT_Fork_Vladimir/QRGenearator" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

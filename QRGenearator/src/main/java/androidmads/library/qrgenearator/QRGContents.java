@@ -30,14 +30,11 @@ public class QRGContents {
         public static final String LOCATION = "LOCATION_TYPE";
     }
 
-    public static final String URL_KEY = "URL_KEY";
-
-    public static final String NOTE_KEY = "NOTE_KEY";
-
     // When using Type.CONTACT, these arrays provide the keys for adding or retrieving multiple
     // phone numbers and addresses.
     public static final String[] PHONE_KEYS = {
-            ContactsContract.Intents.Insert.PHONE, ContactsContract.Intents.Insert.SECONDARY_PHONE,
+            ContactsContract.Intents.Insert.PHONE,
+            ContactsContract.Intents.Insert.SECONDARY_PHONE,
             ContactsContract.Intents.Insert.TERTIARY_PHONE
     };
 
@@ -48,7 +45,8 @@ public class QRGContents {
     };
 
     public static final String[] EMAIL_KEYS = {
-            ContactsContract.Intents.Insert.EMAIL, ContactsContract.Intents.Insert.SECONDARY_EMAIL,
+            ContactsContract.Intents.Insert.EMAIL,
+            ContactsContract.Intents.Insert.SECONDARY_EMAIL,
             ContactsContract.Intents.Insert.TERTIARY_EMAIL
     };
 

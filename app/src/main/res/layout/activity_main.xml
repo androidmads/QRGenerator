@@ -23,18 +23,26 @@
         android:orientation="horizontal">
 
         <Button
-            android:layout_weight="1"
             android:id="@+id/generate_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/generate"/>
+            android:layout_weight="1"
+            android:text="@string/generate" />
 
         <Button
-            android:layout_weight="1"
             android:id="@+id/save_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/save"/>
+            android:layout_weight="1"
+            android:text="@string/save" />
+
+        <Button
+            android:onClick="goto_CQBarcode"
+            android:id="@+id/qr_barcode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="QR contact" />
     </LinearLayout>
 
     <ImageView
