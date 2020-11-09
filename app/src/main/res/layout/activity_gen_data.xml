@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="name"
+            android:hint="name surname"
             android:inputType="textPersonName" />
 
         <EditText
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="mail"
+            android:hint="mail@gmail.com"
             android:inputType="textEmailAddress" />
 
     </LinearLayout>
@@ -102,7 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="website"
+            android:hint="somewebsite.com"
             android:inputType="textUri" />
 
     </LinearLayout>
