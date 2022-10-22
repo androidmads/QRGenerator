@@ -1,19 +1,12 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
-
-group = 'androidmads.library.qrgenearator' // Change this to match your package name
-version = '1.0.4' // Change this to match your version number
+apply plugin: 'maven-publish'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 33
     }
     buildTypes {
         release {
@@ -24,31 +17,20 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.zxing:core:3.3.2'
+    implementation 'com.google.zxing:core:3.5.0'
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    pkg {
-        repo = 'maven'
-        name = 'androidmads.library.qrgenearator'
-
-        version {
-            name = '1.0.4'
-            desc = 'QR Generator Library'
-            released = new Date()
-            vcsTag = '1.0.4'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'androidmads.library.qrgenearator'
+                artifactId = 'QRGenearator'
+                version = '1.0.0'
+            }
         }
-
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/androidmads/QRGenerator.git'
-        websiteUrl = 'https://androidmads.blogspot.com'
     }
-    configurations = ['archives']
 }
 
 task generateSourcesJar(type: Jar) {

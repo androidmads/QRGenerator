@@ -14,7 +14,36 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_text"
         android:importantForAutofill="no"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_margin="8dp"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:hint="Set Black Color"
+        android:text="#000000"
+        android:id="@+id/preview_selected_firstcolor"
+        android:minHeight="48dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        tools:ignore="HardcodedText" />
+
+
+    <EditText
+        android:hint="Set White Color"
+        android:text="#ffffff"
+        android:layout_height="wrap_content"
+        android:id="@+id/preview_selected_secondcolor"
+        android:minHeight="48dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,29 +52,46 @@
         android:orientation="horizontal">
 
         <Button
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:id="@+id/generate_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/generate" />
+            android:text="@string/generate"
+            tools:ignore="ButtonStyle,TextViewEdits" />
 
         <Button
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:id="@+id/save_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/save" />
+            android:text="@string/save"
+            tools:ignore="ButtonStyle,TextViewEdits" />
 
         <Button
-            android:onClick="goto_CQBarcode"
             android:id="@+id/qr_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="QR contact" />
+            android:onClick="goto_CQBarcode"
+            android:text="QR contact"
+            tools:ignore="ButtonStyle,HardcodedText,UsingOnClickInXml" />
     </LinearLayout>
 
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Preview"
+        tools:ignore="HardcodedText,UsingOnClickInXml" />
+
     <ImageView
+        android:layout_marginTop="10dp"
         android:id="@+id/qr_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

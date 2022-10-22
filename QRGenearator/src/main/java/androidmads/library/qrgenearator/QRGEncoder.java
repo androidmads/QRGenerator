@@ -227,7 +227,7 @@ public class QRGEncoder {
             for (int y = 0; y < height; y++) {
                 int offset = y * width;
                 for (int x = 0; x < width; x++) {
-                    pixels[offset + x] = result.get(x, y) ? getColorBlack() : getColorWhite();
+                    pixels[offset + x] = result.get(x, y) ? getColorWhite() : getColorBlack();
                 }
             }
 
