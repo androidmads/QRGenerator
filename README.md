@@ -27,6 +27,7 @@ dependencies {
 1. QR code color can be changed dynamically
 2. Android X support is included
 3. Minimum support from version 14 is included
+4. Margin of the QR code can be controlled
 
 ### Permission:
 Add This Permission for saving your generated code
@@ -44,6 +45,21 @@ qrgEncoder.setColorWhite(Color.BLUE);
 try {
   // Getting QR-Code as Bitmap
   bitmap = qrgEncoder.getBitmap();
+  // Setting Bitmap to ImageView
+  qrImage.setImageBitmap(bitmap);
+} catch (WriterException e) {
+  Log.v(TAG, e.toString());
+}
+```
+The following lines are used to generated the QR Code without margin/default border
+```java
+// Initializing the QR Encoder with your value to be encoded, type you required and Dimension
+QRGEncoder qrgEncoder = new QRGEncoder(inputValue, null, QRGContents.Type.TEXT, smallerDimension);
+qrgEncoder.setColorBlack(Color.RED);
+qrgEncoder.setColorWhite(Color.BLUE);
+try {
+  // Getting QR-Code as Bitmap
+  bitmap = qrgEncoder.getBitmap(0);
   // Setting Bitmap to ImageView
   qrImage.setImageBitmap(bitmap);
 } catch (WriterException e) {
