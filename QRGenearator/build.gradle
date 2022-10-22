@@ -27,7 +27,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'androidmads.library.qrgenearator'
                 artifactId = 'QRGenearator'
-                version = '1.0.0'
+                version = '1.0.1'
             }
         }
     }
