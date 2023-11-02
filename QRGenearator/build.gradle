@@ -11,7 +11,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFile('proguard-sdk.pro')
         }
     }
     namespace 'androidmads.library.qrgenearator'
@@ -21,35 +21,12 @@ dependencies {
     implementation 'com.google.zxing:core:3.5.0'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'androidmads.library.qrgenearator'
-                artifactId = 'QRGenearator'
-                version = '1.0.1'
-            }
+publishing {
+    publications {
+        release(MavenPublication) {
+//            afterEvaluate {
+//                from components.release
+//            }
         }
     }
-}
-
-task generateSourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier 'sources'
-}
-
-task generateJavadocs(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task generateJavadocsJar(type: Jar) {
-    from generateJavadocs.destinationDir
-    classifier 'javadoc'
-}
-
-artifacts {
-    archives generateSourcesJar
-    archives generateJavadocsJar
 }
