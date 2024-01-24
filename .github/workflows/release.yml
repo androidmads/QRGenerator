@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Publish release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Find Tag
+        id: tagger
+        uses: jimschubert/query-tag-action@v2
+        with:
+          skip-unshallow: 'true'
+          commit-ish: HEAD
+      - name: Check pre-release
+        run: |
+          echo "tag=${{steps.tagger.outputs.tag}}"
+          if [[ ${{ steps.tagger.outputs.tag }} == *alpha* || ${{ steps.tagger.outputs.tag }} == *beta* ]]
+          then
+             prerelease=true
+          else
+             prerelease=false
+          fi
+          echo "PRE_RELEASE=$prerelease" >> $GITHUB_ENV
+          echo "prerelease=$prerelease"
+      - name: Install JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: 17
+      - name: Install Android SDK
+        uses: hannesa2/action-android/install-sdk@0.1.4.10
+      - name: Build project
+        run: ./gradlew assembleRelease
+        env:
+          VERSION: ${{steps.tagger.outputs.tag}}
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{steps.tagger.outputs.tag}}
+          generate_release_notes: true
+          prerelease: ${{ env.PRE_RELEASE }}
+          name: ${{steps.tagger.outputs.tag}}
+          files: |
+            ./QRGenearator/build/outputs/aar/QRGenearator-release.aar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
