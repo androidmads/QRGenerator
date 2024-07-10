@@ -55,8 +55,8 @@ The following lines are used to generated the QR Code without margin/default bor
 ```java
 // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
 QRGEncoder qrgEncoder = new QRGEncoder(inputValue, null, QRGContents.Type.TEXT, smallerDimension);
-qrgEncoder.setColorBlack(Color.RED);
-qrgEncoder.setColorWhite(Color.BLUE);
+qrgEncoder.setColorBlack(Color.WHITE);
+qrgEncoder.setColorWhite(Color.BLACK);
 try {
   // Getting QR-Code as Bitmap
   bitmap = qrgEncoder.getBitmap(0);
