@@ -8,6 +8,7 @@ QR Generator Library and Saves the QR Code as Image
 ### How to Import the Library:
 Add it in your root build.gradle at the end of repositories:
 
+<b>App-level build.gradle:</b>
 ``` groovy
 allprojects {
   repositories {
@@ -16,11 +17,27 @@ allprojects {
   }
 }
 ```
-<b>Gradle:</b>
+<b>Module-level build.gradle:</b>
 ```groovy
 dependencies {
-  implementation 'com.github.androidmads:QRGenerator:1.0.1'
+  implementation 'com.github.androidmads:QRGenerator:1.0.2'
 }
+```
+<b>settings.gradle:</b>
+```
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven(url = "https://jitpack.io")
+    }
+}
+```
+Activity:
+```
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 ```
 
 ### Features:
