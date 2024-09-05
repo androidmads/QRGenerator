@@ -79,7 +79,7 @@ public class QRGEncoder {
         switch (type) {
             case QRGContents.Type.TEXT:
                 if (data != null && data.length() > 0) {
-                    contents = data;
+                    contents = data.replace("\\n", "\n");
                     displayContents = data;
                     title = "Text";
                 }
@@ -279,7 +279,7 @@ public class QRGEncoder {
                 return "UTF-8";
             }
         }
-        return null;
+        return "UTF-8"; // Default encoding
     }
 
     private String trim(String s) {
