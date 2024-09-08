@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import java.util.Objects;
 
+import androidmads.library.qrgenearator.BarcodeEncoder;
+import androidmads.library.qrgenearator.BarcodeFormat;
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 import androidmads.library.qrgenearator.QRGSaver;
@@ -57,6 +59,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         findViewById(R.id.generate_barcode).setOnClickListener(view -> {
+            inputValue = edtValue.getText().toString().trim();
+            if (inputValue.length() > 0) {
+                try {
+
+                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder(inputValue,
+                            BarcodeFormat.CODE_128, 800);
+                    bitmap = barcodeEncoder.getBitmap(2);  // Margin of 2 pixels
+
+// Now you can use this bitmap as needed, e.g., display it in an ImageView
+
+                    qrImage.setImageBitmap(bitmap);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                edtValue.setError(getResources().getString(R.string.value_required));
+            }
+        });
+
+
+        findViewById(R.id.generate_qrcode).setOnClickListener(view -> {
             inputValue = edtValue.getText().toString().trim();
             if (inputValue.length() > 0) {
                 WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);

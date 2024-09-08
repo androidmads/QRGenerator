@@ -83,6 +83,13 @@ try {
   Log.v(TAG, e.toString());
 }
 ```
+The following lines are used to generated the Bar Code
+```java
+BarcodeEncoder barcodeEncoder = new BarcodeEncoder(inputValue, BarcodeFormat.CODE_128, 800);
+bitmap = barcodeEncoder.getBitmap(2);  // Margin of 2 pixels
+// Now you can use this bitmap as needed, e.g., display it in an ImageView
+qrImage.setImageBitmap(bitmap);
+```
 
 Save QR Code as Image 
 ```java

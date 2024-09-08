@@ -12,37 +12,37 @@
         android:id="@+id/edt_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:hint="@string/enter_text"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:layout_margin="8dp"
         android:minHeight="48dp" />
 
     <EditText
-        android:hint="Set Black Color"
-        android:text="#000000"
         android:id="@+id/preview_selected_firstcolor"
-        android:minHeight="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:hint="Set Black Color"
         android:importantForAutofill="no"
         android:inputType="text"
+        android:minHeight="48dp"
+        android:text="#000000"
         tools:ignore="HardcodedText" />
 
 
     <EditText
-        android:hint="Set White Color"
-        android:text="#ffffff"
-        android:layout_height="wrap_content"
         android:id="@+id/preview_selected_secondcolor"
-        android:minHeight="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
-        android:layout_width="match_parent"
+        android:hint="Set White Color"
         android:importantForAutofill="no"
         android:inputType="text"
+        android:minHeight="48dp"
+        android:text="#ffffff"
         tools:ignore="HardcodedText" />
 
     <LinearLayout
@@ -52,22 +52,39 @@
         android:orientation="horizontal">
 
         <Button
-            android:importantForAutofill="no"
-            android:inputType="text"
             android:id="@+id/generate_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/generate"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:text="@string/generate_bar"
             tools:ignore="ButtonStyle,TextViewEdits" />
 
         <Button
+            android:id="@+id/generate_qrcode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:text="@string/generate_qr"
+            tools:ignore="ButtonStyle,TextViewEdits" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
             android:id="@+id/save_barcode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:text="@string/save"
             tools:ignore="ButtonStyle,TextViewEdits" />
 
@@ -82,19 +99,19 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:textSize="20sp"
         android:text="Preview"
+        android:textSize="20sp"
         tools:ignore="HardcodedText,UsingOnClickInXml" />
 
     <ImageView
-        android:layout_marginTop="10dp"
         android:id="@+id/qr_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:contentDescription="@string/app_name" />
 
 </LinearLayout>

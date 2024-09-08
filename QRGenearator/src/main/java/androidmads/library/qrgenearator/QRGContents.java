@@ -56,3 +56,4 @@ public class QRGContents {
             ContactsContract.Intents.Insert.TERTIARY_EMAIL_TYPE
     };
 }
+

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">QRGenerator</string>
     <string name="save">Save</string>
-    <string name="generate">Generate</string>
+    <string name="generate_bar">Generate Barcode</string>
+    <string name="generate_qr">Generate QR Code</string>
     <string name="enter_text">Enter Text</string>
     <string name="value_required">Value Required</string>
 </resources>
