@@ -2,9 +2,16 @@
 QR Generator Library and Saves the QR Code as Image
 
 ### Featured In:
-[![](https://jitpack.io/v/androidmads/QRGenerator.svg)](https://jitpack.io/#androidmads/QRGenerator)
+[![](https://jitpack.io/v/androidmads/QRGenerator.svg?style=for-the-badge)](https://jitpack.io/#androidmads/QRGenerator)
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-QRGenerator-green.svg?style=true)](https://android-arsenal.com/details/1/3890)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-QR%20Generator-green.svg?style=for-the-badge)](https://android-arsenal.com/details/1/3890)
+
+[![CSharpCorner](https://img.shields.io/badge/C%23-Corner-blue.svg?style=for-the-badge)](https://www.c-sharpcorner.com/article/how-to-generate-qr-code-in-android/)
+
+[![StackOverflow](https://img.shields.io/badge/stack%20overflow-FE7A16?logo=stack-overflow&logoColor=white&style=for-the-badge)](https://rb.gy/vol1bm)
+
+[![Androidmads](https://img.shields.io/badge/Androidmads-Blog-09BBB2?style=for-the-badge)]([https://rb.gy/vol1bm](https://www.androidmads.info/2018/07/how-to-generate-qr-code-in-android.html))
+
 ### How to Import the Library:
 Add it in your root build.gradle at the end of repositories:
 
