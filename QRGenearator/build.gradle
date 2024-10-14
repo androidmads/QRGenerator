@@ -14,6 +14,12 @@ android {
         }
     }
     namespace 'androidmads.library.qrgenearator'
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
@@ -21,12 +27,15 @@ dependencies {
     implementation 'com.google.zxing:android-integration:3.3.0'
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-//            afterEvaluate {
-//                from components.release
-//            }
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.androidmads'
+                artifactId = 'QRGenearator'
+                version = '1.0.4'
+            }
         }
     }
 }
