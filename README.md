@@ -27,7 +27,7 @@ allprojects {
 <b>Module-level build.gradle:</b>
 ```groovy
 dependencies {
-  implementation 'com.github.androidmads:QRGenerator:1.0.4'
+  implementation 'com.github.androidmads:QRGenerator:1.0.5'
 }
 ```
 <b>settings.gradle:</b>
